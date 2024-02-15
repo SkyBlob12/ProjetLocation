@@ -1,0 +1,417 @@
+openapi: '3.0.2'
+info:
+  title: API Location Vehicule
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /user:
+    get:
+      tags:
+        - "user"
+      summary: "List of users"
+      operationId: getUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref: '#/components/schemas/User'
+        '404':
+          description: No user found
+    post:
+      tags:
+        - "user"
+      summary: "Add user"
+      operationId: addUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref: '#/components/schemas/User'
+        '404':
+          description: No user added
+    put:
+      tags:
+        - "user"
+      summary: "Update an existent user by his Id"
+      operationId: updateUser
+      requestBody:
+        description: Update an existent user for rentals
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/User'
+        '400':
+          description: Invalid Id
+        '404':
+          description: User not found
+  /user/{userId}:
+    get:
+      tags:
+        - "user"
+      summary: "User by his Id"
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: Id of user to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/User'
+        '400':
+          description: Invalid Id
+        '404':
+          description: User not found
+    delete:
+      tags:
+        - "user"
+      summary: "Delete user by his Id"
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: Id of the user to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Id
+  /car:
+    get:
+      tags:
+        - "car"
+      summary: "List of cars"
+      operationId: getCars
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Car'
+        '404':
+          description: No car found
+    post:
+      tags:
+        - "car"
+      summary: "Add car"
+      operationId: addCar
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref: '#/components/schemas/Car'
+        '404':
+          description: No car added
+    put:
+      tags:
+        - "car"
+      summary: "Update an existent car by his Id"
+      operationId: updateCar
+      requestBody:
+        description: Update an existent car for rentals
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Car'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Car not found
+  /car/{carId}:
+    get:
+      tags:
+        - "car"
+      summary: "Car by his Id"
+      operationId: getCarById
+      parameters:
+        - name: carId
+          in: path
+          description: Id of car to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Car'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Car not found
+    delete:
+      tags:
+        - "car"
+      summary: "Delete car by his Id"
+      operationId: deleteCar
+      parameters:
+        - name: carId
+          in: path
+          description: Id of the car to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Id
+  /rental:
+    get:
+      tags:
+        - "rental"
+      summary: "List of rentals"
+      operationId: getRentals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Rental'
+        '404':
+          description: No rental found
+    post:
+      tags:
+        - "rental"
+      summary: "Add rental"
+      operationId: addRental
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref: '#/components/schemas/Rental'
+        '404':
+          description: No rental added
+  /rental/{rentalId}:
+    get:
+      tags:
+        - "rental"
+      summary: "rental by his Id"
+      operationId: getRentalById
+      parameters:
+        - name: rentalId
+          in: path
+          description: Id of rental to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Rental'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Rental not found
+    delete:
+      tags:
+        - "rental"
+      summary: "Delete rental by his Id"
+      operationId: DeleteRental
+      parameters:
+        - name: rentalId
+          in: path
+          description: Id of the rental to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Id
+  /review:
+    get:
+      tags:
+        - "review"
+      summary: "List of reviews"
+      operationId: getReviews
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Review'
+        '404':
+          description: No review found
+    post:
+      tags:
+        - "review"
+      summary: "Add review"
+      operationId: addReview
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref: '#/components/schemas/Review'
+        '404':
+          description: No review added
+  /review/{reviewId}:
+    get:
+      tags:
+        - "review"
+      summary: "review by his Id"
+      operationId: getReviewById
+      parameters:
+        - name: reviewId
+          in: path
+          description: Id of review to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json :
+              schema :
+                $ref : '#/components/schemas/Review'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Review not found
+    delete:
+      tags:
+        - "review"
+      summary: "Delete review by his Id"
+      operationId: DeleteReview
+      parameters:
+        - name: reviewId
+          in: path
+          description: Id of the review to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid Id
+      
+components:
+  schemas:
+    User:
+      type : object
+      properties:
+        id :
+          type : integer
+          example : 1
+        nom :
+          type : string
+          example : Andrieu
+        prenom :
+          type : string
+          example : Clement
+        mail: 
+          type: string
+          example: clement.andrieu@ynov.com
+        password:
+          type: string
+          example: pwd4loca
+        isAdmin:
+          type: boolean
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        marque:
+          type: string
+          example: Ford
+        modele:
+          type: string
+          example: Fiesta
+        type:
+          type: string
+          example: Citadine
+        annee:
+          type: string
+          maxLength: 4
+          example : 2019
+        carburant:
+          type: string
+          example: essence
+    Rental:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        idUser:
+          type: integer
+          example: 1
+        idCar:
+          type: integer
+          example: 1
+        dateDebut:
+          type: string
+          format: date-time
+        dateFin:
+          type: string
+          format: date-time
+        prix:
+          type: number
+          example: 75
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        idRental:
+          type: integer
+          example: 1
+        idUser:
+          type: integer
+          example: 1
+        commentaire:
+          type: string
+          example: Lorem ipsum
+        dateEcriture:
+          type: string
+          format: date-time

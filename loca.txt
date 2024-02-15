@@ -1,0 +1,30 @@
+users / cars / rentals / review
+
+users   => id|nom|prenom|mail|password
+cars    => id|marque|modele|type|annee|carburant
+rentals => id|idUser|idCar|dateDebut|dateFin|prix
+reviews => id|idRental|idUser|commentaire|dateEcriture
+
+
+gestion users:	id|nom|prenom|mail|password
+- un client ne peux pas supprimer/ajouter/modifier un user, une voiture, un tarif
+- un client peut ajouter une location sur une voiture pour une date
+- un client peut ajouter une review une fois sa location terminé
+- un client ne peut pas supprimer/modifier une location et une review
+- un admin peut supprimer un user, une voiture, une location, une review et un tarif (il doit y avoir au minimum 1 admin)
+
+
+gestion cars:
+- une voiture ne peut pas être loué par plusieurs users pour une même date
+
+
+gestion rentals:
+- une location est lié par l'id de la voiture et de l'user
+
+
+gestion review:
+- une review est lié par l'id de la location et de l'user
+
+
+voiture indispo à partir de certains km à l'année --> maintenance
+tarif en fonction de cars et rentals

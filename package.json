@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express-openapi-validator": "^5.1.6",
+    "sequelize": "^6.37.0",
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  },
+  "name": "projetlocation",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
